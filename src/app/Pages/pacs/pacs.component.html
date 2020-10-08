@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">{{ projectName }}</h1>
+      <div class="text-center">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-danger m-2 px-4" data-toggle="modal" data-target="#staticBackdrop">
+          {{ actualSprint }}
+        </button>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="text-center">Fechas de Sprints</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item list-group-item-info mb-2"
+                      *ngFor="let int of projectDateArray; index as i">
+                      {{ projectDateArray[i][0] | date }} -
+                      {{ projectDateArray[i][1] | date }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-success py-2" data-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--row 1 Proyect states and documents-->
+  <div class="row">
+    <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab" aria-controls="home-md"
+          aria-selected="true">Espera</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab"
+          aria-controls="profile-md" aria-selected="false">Realizando</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab-md" data-toggle="tab" href="#contact-md" role="tab"
+          aria-controls="contact-md" aria-selected="false">Finalizado</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="asign-tab-md" data-toggle="tab" href="#asign-md" role="tab" aria-controls="asign-md"
+          aria-selected="false">Asignar Usuario / Tarea</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="documents-tab-md" data-toggle="tab" href="#documents-md" role="tab"
+          aria-controls="documents-md" aria-selected="false">Documentos</a>
+      </li>
+      <li class="nav-item">
+        <button data-toggle="modal" data-target="#exampleModalLong" class="nav-link btn btn-outline-danger" role="tab"
+          aria-selected="false">
+          Finalizar Proyecto
+        </button>
+      </li>
+    </ul>
+    <!-- Modal complete Project -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <img src="../../../assets/images/finishProject.jpg" class="img-fluid"
+                    alt="Puede contener dos personas" />
+                  <h4 class="text-center">
+                    Fue un largo camino pero juntos lo logramos
+                  </h4>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <input (change)="changeCheck($event)" type="checkbox">
+                      </div>
+                    </div>
+                    <label for="" class="form-control">Confirma que estas seguro de finalizar el proyecto</label>
+
+                  </div>
+                  <p class="text-muted font-italic text-center">Por favor verifica que el proyecto fue finalizado antes
+                    de dar por finalizado el proyecto, este proceso no es reversible</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success" [disabled]="disabledFinish" (click)="projectStatus()">Dar por
+            finalizado el proyecto actual</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content pt-5" id="myTabContentMD">
+      <!--To do Tasks-->
+      <div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <app-tasks-to-do></app-tasks-to-do>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--To do Tasks ends-->
+      <!--Doing Tasks -->
+      <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <app-tasks></app-tasks>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Doing Tasks ends-->
+      <!--Done Tasks -->
+      <div class="tab-pane fade" id="contact-md" role="tabpanel" aria-labelledby="contact-tab-md">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <app-tasks-done></app-tasks-done>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Done Tasks ends-->
+      <div class="tab-pane fade" id="asign-md" role="tabpanel" aria-labelledby="asign-tab-md">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <app-asign></app-asign>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="documents-md" role="tabpanel" aria-labelledby="documents-tab-md">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <app-documents></app-documents>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Button to create a new task on the proyect-->
+  <button type="button" class="btn py-2 mt-2 float" data-toggle="modal" data-target="#exampleModal">
+    <i class="fa fa-plus my-float"></i>
+  </button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <!--Form Starts-->
+    <form [formGroup]="form" (ngSubmit)="createPacsTask()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear nueva tarea</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--Modal content-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <input type="text" name="name" formControlName="name" [class.is-invalid]="nameNoValido"
+                  class="form-control text-center btn-block" placeholder="Nombre de la nueva tarea" />
+              </div>
+              <div class="col">Fecha inicio / {{ actualDate }}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-6">
+                <div class="">
+                  <textarea class="form-control" name="task_description" [class.is-invalid]="task_descriptionNoValido"
+                    formControlName="task_description" placeholder="Describenos la tarea que se va a agregar" rows="7"
+                    required></textarea>
+                </div>
+              </div>
+              <div class="col-6">
+                <select id="priority_points" name="priority_points" formControlName="priority_points"
+                  [class.is-invalid]="priority_pointsNoValido" class="custom-select mt-3">
+                  <option value="" disabled selected>
+                    Puntos de prioridad
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="8">8</option>
+                  <option value="13">13</option>
+                  <option value="21">21</option>
+                </select>
+
+                <select id="project_task_sprint" name="sprint_location" formControlName="sprint_location"
+                  [class.is-invalid]="sprint_locationNoValido" class="custom-select mt-3">
+                  <option value="" disabled selected>Sprint</option>
+                  <option *ngFor="let item of sprints(); index as i" value="{{ i + 1 }}">
+                    {{ i + 1 }}
+                  </option>
+                </select>
+
+                <select id="project_task_state" name="status" formControlName="status"
+                  [class.is-invalid]="statusNoValido" class="custom-select mt-3">
+                  <option value="" disabled selected>Estado</option>
+                  <option value="Espera">Espera</option>
+                  <option value="Realizando">Realizando</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary btn-block">
+            Agregar Tarea
+          </button>
+        </div>
+      </div>
+    </form>
+    <!--Forms ends-->
+  </div>
+</div>

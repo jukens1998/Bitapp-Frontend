@@ -1,0 +1,30 @@
+<form class="form-inline" [formGroup]="form" (ngSubmit)="uploadDocument()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <h3 class="text-center">
+                    Documentos del proyecto
+                </h3>
+                <hr>
+                <ul class="list-group">
+                    <a class="list-group-item list-group-item-action" *ngFor="let document of documentlist; index as i;"
+                        (click)="DownloadFile(document[2],document[1])">{{document[1]}}</a>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h3 class="text-center">Agregar documento</h3>
+                <hr />
+                <p class="text-center">
+                    <img src="../../../../assets/images/Save.png" height="100" alt="">
+                </p>
+                <input type="file" class="text-wrap" formControlName="document" href="#"
+                    (change)="handleFileInput($event.target.files)" />
+                <p class="text-muted text-center">Formatos soportados: .txt, .pdf, .doc, .docx, .xls, .xlsx, .xlsm, .png
+                    .jpg, .jpeg, .gif, .csv</p>
+                <button class="btn btn-success btn-block mt-3" type="submit">
+                    Subir archivo
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

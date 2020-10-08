@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-2">Creación proyectos</h1>
+            <hr>
+            <form [formGroup]="form" (ngSubmit)="createProjectScrum()">
+                <div class="form-group">
+                    <label for="proyectName">Nombre del nuevo proyecto</label>
+                    <input type="text" name="name" formControlName="name" [class.is-invalid]="nameNoValido"
+                        class="form-control" id="proyectName">
+                </div>
+                <div class="form-row">
+                    <div class="col-3">
+                        <label for="creationDate">Fecha de inicio del
+                            proyecto</label>
+                        <p class="img-thumbnail text-center bg-secondary text-white">{{date | date:'short'}}</p>
+                    </div>
+                    <div class="col-6">
+                        <label for="finalizationDate">Fecha aproximada de finalización del
+                            proyecto</label>
+                        <input class="form-control titles" type="date" name="finalization_date"
+                            formControlName="finalization_date" [class.is-invalid]="finalization_dateNoValido"
+                            id="finalizationDate">
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <!-- Button trigger modal -->
+                            <button type="button" id="modalButton" class="btn btn-primary btn-block" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Cantidad de Sprints
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <label for="projectDescription">Descripción del proyecto</label>
+                <textarea class="form-control mt-2" id="projectDescription" name="project_description"
+                    formControlName="project_description" [class.is-invalid]="project_descriptionNoValido"
+                    placeholder="Danos una descripción del proyecto y el enfoque que este tendrá" rows="8" required>
+                </textarea>
+                <button type="submit" class="btn btn-outline-success btn-block mt-2">Crear proyecto</button>
+                <!--Modal Starts***************************************-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Sprints</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationTooltip01">Cantidad de Sprints </label>
+                                        <input type="number" name="sprints_amount" formControlName="sprints_amount"
+                                            class="form-control" id="validationTooltip01"
+                                            [class.is-invalid]="sprints_amountNoValido" value="0" required
+                                            (change)="springsDates()">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationTooltip02">Número de días por Sprint</label>
+                                        <input type="number" name="sprints_duration" formControlName="sprints_duration"
+                                            class="form-control" id="validationTooltip02"
+                                            [class.is-invalid]="sprints_durationNoValido" value="0" required
+                                            (change)="springsDates()">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="text-center">Fechas de Sprints</h2>
+                                        <ul class="list-group list-group-flush text-center">
+                                            <li class="list-group-item" *ngFor="let int of projectDates; index as i;">
+                                                {{projectDates[i][0] | date}} - {{projectDates[i][1] | date}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Establecer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

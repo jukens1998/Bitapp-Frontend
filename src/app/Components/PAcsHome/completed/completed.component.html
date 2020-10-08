@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center font-weight-bold">Estos son tus proyectos Finalizados</h1>
+        </div>
+        <div class="col-12">
+            <hr class="mb-4">
+            <!--Dynamic cards starts-->
+            <div class="card mb-3" *ngFor="let project of projects">
+                <h5 class="card-header text-white bg-dark"> {{project[1]}} / <span
+                        class="font-italic font-weight-normal">{{project[3] | date}} -
+                        {{project[4] | date}}</span> </h5>
+                <div class="card-body">
+                    <h5 class="card-title"><span class="font-weight-normal">El Scrum master de este
+                            proyecto es: </span>{{project[2]}}</h5>
+                    <h5>Descripción del proyecto:</h5>
+                    <p class="card-text">{{project[6]}}</p>
+                    <div class="form-row">
+                        <div class="col">
+                            <p>Cantidad de Sprints <span class="font-italic">{{project[5]}}</span>
+                            </p>
+                        </div>
+                        <div class="col text-right">
+                            <button (click)="selectProject(project[1],project[0],project[3],project[5],project[8])"
+                                class="d-inline btn
+                            btn-outline-success btn-lg">Ir al proyecto</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Dynamic cards ends-->
+        </div>
+        <!--If there´s no task, but ther are registers-->
+        <div class="col-12" *ngIf="!emptyProjects">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img class="card-img" src="../../../../assets/images/allDone.jpg"
+                            alt="Puede contener una mujer">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Es todo por ahora</h5>
+                            <p class="card-text">No tienes proyectos asignados, espera a que se te sea asignado algun
+                                proyecto
+                            </p>
+                            <p class="card-text"><small class="text-muted">Cemex Colombia</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--If there´s no task, but ther are registers-->
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center img-thumbnail mx-2">
+            <div class="col-12 mb-4 mt-2">
+                <h3>Asignar proyecto</h3>
+                <hr>
+            </div>
+            <!--Form asign project starts-->
+            <form [formGroup]="formProject" (ngSubmit)="asignUserProject()">
+                <div class="row">
+                    <div class="col">
+                        <label class="font-weight-light">Proyecto a asignar</label>
+                        <h4>{{projectName}}</h4>
+                    </div>
+                    <div class="col">
+                        <label class="font-weight-light">Usuarios disponibles</label>
+                        <select class="form-control" name="userProject" formControlName="userProject">
+                            <option selected>Choose...</option>
+                            <option *ngFor=" let users of usersProject" value={{users}}>{{users}}</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <button type="submit" class="btn btn-success btn-block">Asignar</button>
+                    </div>
+                </div>
+            </form>
+            <!--Form asign project ends-->
+        </div>
+        <div class="col text-center img-thumbnail mx-2">
+            <div class="col-12 mb-4 mt-2">
+                <h3>Asignar tarea</h3>
+                <hr>
+            </div>
+            <!--Form asign project task starts-->
+            <form [formGroup]="formTask" (ngSubmit)="asignUserTaskProject()">
+                <div class="row">
+                    <div class="col">
+                        <label class="font-weight-light">Tareas</label>
+                        <select class="form-control" name="taskToAsign" formControlName="taskToAsign">
+                            <option selected>Choose...</option>
+                            <option *ngFor="let taskAsign of tasksAsign" value={{taskAsign[0]}}>{{taskAsign[1]}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="font-weight-light">Usuarios disponible</label>
+                        <select class="form-control" name="userTask" formControlName="userTask">
+                            <option selected>Choose...</option>
+                            <option *ngFor="let userTask of usersProjectTask" value={{userTask}}>{{userTask}}</option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <button class="btn btn-success btn-block">Asignar</button>
+                    </div>
+                </div>
+            </form>
+            <!--Form asign project task ends-->
+        </div>
+    </div>
+</div>

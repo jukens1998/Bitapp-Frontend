@@ -1,0 +1,40 @@
+<div class="container-fluid pt-3">
+    <div class="row">
+        <div class="col-2">
+            <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist"
+                aria-orientation="vertical">
+                <a class="nav-link active btn-outline-info mb-2" id="v-pills-own-tab" data-toggle="pill"
+                    href="#v-pills-own" role="tab" aria-controls="v-pills-own" aria-selected="true">Tus proyectos</a>
+                <a class="nav-link btn-outline-info mb-2" id="v-pills-scrum-tab" data-toggle="pill"
+                    href="#v-pills-scrum" role="tab" aria-controls="v-pills-scrum" aria-selected="false">Proyectos Scrum
+                    Master</a>
+                <a class="nav-link btn-outline-info mb-2" id="v-pills-completed-tab" data-toggle="pill"
+                    href="#v-pills-completed" role="tab" aria-controls="v-pills-completed"
+                    aria-selected="false">Proyectos Terminados
+                </a>
+                <a class="nav-link btn-outline-info mb-2" id="v-pills-create-tab" data-toggle="pill"
+                    href="#v-pills-create" role="tab" aria-controls="v-pills-create" aria-selected="false">Crear
+                    proyectos
+                </a>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-own" role="tabpanel"
+                    aria-labelledby="v-pills-own-tab">
+                    <app-assigned-projects></app-assigned-projects>
+                </div>
+                <div class="tab-pane fade" id="v-pills-scrum" role="tabpanel" aria-labelledby="v-pills-scrum-tab">
+                    <app-scrum-projects></app-scrum-projects>
+                </div>
+                <div class="tab-pane fade" id="v-pills-completed" role="tabpanel"
+                    aria-labelledby="v-pills-completed-tab">
+                    <app-completed></app-completed>
+                </div>
+                <div class="tab-pane fade" id="v-pills-create" role="tabpanel" aria-labelledby="v-pills-create-tab">
+                    <app-create-project></app-create-project>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div *ngFor="let DoneStateTask of DoneStateTasks" class="card  mb-3 ">
+                <div class="card-header text-white  font-weight-bolder class{{DoneStateTask[3]}}">{{DoneStateTask[0]}} /
+                    {{DoneStateTask[1] | date}}</div>
+                <div class="card-body">
+                    <h5 class="card-title"><span class="font-weight-normal">Puntos de prioridad:</span>
+                        <span class="font-weight-bold"> {{DoneStateTask[3]}}</span> / <span
+                            class="font-weight-normal">Sprint:</span> <span class="font-weight-bold">
+                            {{DoneStateTask[4]}}</span></h5>
+                    <div class="img-thumbnail mb-3">
+                        <h5>Descripción de la tarea:</h5>
+                        <p class="card-text">{{DoneStateTask[2]}}</p>
+                    </div>
+                    <button (click)="updateTaskState('Espera',DoneStateTask[6])" class="btn btn-danger  mr-3">Pasar
+                        tarea a
+                        Espera</button>
+                    <button (click)="updateTaskState('Realizando',DoneStateTask[6])" class="btn btn-info">Pasar
+                        tarea a
+                        Realizando</button>
+                </div>
+            </div>
+        </div>
+        <!--If there´s no task, but ther are registers-->
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img class="card-img" src="../../../../assets/images/allDone.jpg"
+                            alt="Puede contener una mujer">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Es todo por ahora</h5>
+                            <p class="card-text">No tienes más tareas asignadas, espera a que se te sea asignado alguna,
+                                si tienes dudas, preguntale a tu Scrum Master</p>
+                            <p class="card-text"><small class="text-muted">Cemex Colombia</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--If there´s no task, but ther are registers-->
+    </div>
+</div>
