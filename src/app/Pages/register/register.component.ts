@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserModel } from "../../models/user.model";
 import { FirebaseAuthService } from "../../Services/auth/firebase-auth.service";
 import Swal from 'sweetalert2';
+import { UserIdService } from 'src/app/Services/User/user-id.service';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +15,11 @@ export class RegisterComponent implements OnInit {
 
   usuario: UserModel;
 
-  constructor( private auth: FirebaseAuthService,
-               private router: Router ) { }
+  constructor( private auth: FirebaseAuthService, private router: Router, private userService:UserIdService) { }
 
   ngOnInit() {
     this.usuario = new UserModel();
+   
   }
 
   onSubmit( form: NgForm ) {
@@ -31,15 +32,13 @@ export class RegisterComponent implements OnInit {
       text: 'Espere por favor',
     });
     Swal.showLoading();
-
+    this.userService.createUser(this.usuario.email.replace('@cemex.com', '')).subscribe((result)=>{
+      alert(result);
+    });
     this.auth.register( this.usuario )
-      .subscribe( resp => {
-
-        console.log(resp);
+      .subscribe( resp => {        
         Swal.close();   
-
         this.router.navigateByUrl('/home');
-
       }, (err) => {
         console.log(err.error.error.message);
         Swal.fire({

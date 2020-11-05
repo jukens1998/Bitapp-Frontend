@@ -31,3 +31,9 @@ form {
     height: auto;
     margin: 23px;
 }
+
+@media (max-width: 1200px) {
+    #bannerBitapp{
+    display: none;
+    }
+}

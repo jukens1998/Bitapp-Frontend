@@ -147,6 +147,7 @@ export class BinnacleComponent implements OnInit {
   public getTasks() {
     this.Binnacle.getTasks().subscribe((result) => {
       this.tasks = result;
+      console.log(this.tasks);
     }, (error) => console.error(error));
   }
 

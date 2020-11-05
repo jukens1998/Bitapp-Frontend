@@ -24,6 +24,7 @@ export class UserIdService {
   public setUserId(mail: string) {
     this.userId = mail.replace('@cemex.com', '');
     localStorage.setItem('userId', this.userId);
+    return this.userId;
   }
 
   // Reads the active project from the user
@@ -33,6 +34,14 @@ export class UserIdService {
   }
 
   // Http methods//////////////////////////////////////////////////////////////////////////////////
+
+ 
+  // list all the available users to asign tasks
+  public createUser(userId) {
+    const fd = new FormData();
+    fd.append('userId', userId);
+    return this.http.post(this.myAppUrl + 'api/users/createUser', fd);
+  }
 
   // list all the available users to asign projects
   public getUsersToAsignProject() {
