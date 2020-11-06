@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ export class DateService {
     return actualDate;
   }
   // To sum up days to a Date object
-  public addDays(creationDate: any, amountOfSprints: number, sprintsDuration: number) {
+  public addDays(creationDate: any, amountOfSprints: number, sprintsDuration: number, finalization_date: string) {
     let springDuoDates;
     const date = new Date(creationDate);
     const sprintsDates: any[] = [];
@@ -28,7 +29,18 @@ export class DateService {
       springDuoDates = new Array(2);
       springDuoDates[0] = new Date(date.setDate(date.getDate()));
       springDuoDates[1] = new Date(date.setDate(date.getDate() + sprintsDuration));
-      sprintsDates.push(springDuoDates);
+
+      var projectEndDate = new Date(finalization_date);
+      if (Date.parse(springDuoDates[1]) >Number( Date.parse(finalization_date))+18000000) {
+        Swal.fire(
+          '¿ Las fechas estan bien ?',
+          'por favor verifica la fecha limite que aplicaste, parece que algo anda mal',
+          'question'
+        )
+        return;
+      } else {
+        sprintsDates.push(springDuoDates);
+      }
     }
     return sprintsDates;
   }

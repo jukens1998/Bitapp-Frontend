@@ -25,7 +25,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <!-- Button trigger modal -->
-                            <button type="button" id="modalButton" class="btn btn-primary btn-block" data-toggle="modal"
+                            <button type="button" id="modalButton" class="btn btn-primary btn-block is-invalid" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Cantidad de Sprints
                             </button>
@@ -50,14 +50,14 @@
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip01">Cantidad de Sprints </label>
-                                        <input type="number" name="sprints_amount" formControlName="sprints_amount"
+                                        <input type="number" name="sprints_amount" pattern="^[0-9]" title='Only Number' min="1" step="1" formControlName="sprints_amount"
                                             class="form-control" id="validationTooltip01"
                                             [class.is-invalid]="sprints_amountNoValido" value="0" required
                                             (change)="springsDates()">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip02">Número de días por Sprint</label>
-                                        <input type="number" name="sprints_duration" formControlName="sprints_duration"
+                                        <input type="number" name="sprints_duration"  pattern="^[0-9]" title='Only Number' min="1" step="1" formControlName="sprints_duration"
                                             class="form-control" id="validationTooltip02"
                                             [class.is-invalid]="sprints_durationNoValido" value="0" required
                                             (change)="springsDates()">

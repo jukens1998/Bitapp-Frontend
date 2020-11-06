@@ -231,7 +231,7 @@ export class PAcsService {
           }
         } catch (error) {
           console.log(
-            'There is an object empty, also check the master db to recognize another issue'
+            'There is an object empty, also check the master db to recognize another issue'+error
           );
         }
       },

@@ -31,7 +31,11 @@ export class CreateProjectComponent implements OnInit {
 
   // Set The amount of sprints
   public springsDates() {
-    this.projectDates = this.dateService.addDays(this.date, this.form.get('sprints_amount').value, this.form.get('sprints_duration').value);
+    this.projectDates = this.dateService.addDays(this.date, this.form.get('sprints_amount').value, this.form.get('sprints_duration').value,this.form.get('finalization_date').value);
+   if (this.projectDates==undefined) {
+    this.form.get('sprints_amount').setValue('');
+    this.form.get('sprints_duration').setValue('');
+   }
   }
 
   // Creates forms

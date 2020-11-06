@@ -46,6 +46,7 @@ export class BinnacleComponent implements OnInit {
 
   // constructor
   constructor(private Binnacle: BinacleService, private fb: FormBuilder, private userIdService: UserIdService, public router: Router, private date: DateService) {
+    this.totalTaskTime=Number(localStorage.getItem('totalTaskTime'));
     this.createForm();
   }
 
@@ -147,7 +148,6 @@ export class BinnacleComponent implements OnInit {
   public getTasks() {
     this.Binnacle.getTasks().subscribe((result) => {
       this.tasks = result;
-      console.log(this.tasks);
     }, (error) => console.error(error));
   }
 
@@ -225,6 +225,7 @@ export class BinnacleComponent implements OnInit {
   //Calculate the total amount of time
   public totalTime() {
     this.totalTaskTime += Number(this.taskTimeExtraDuration);
+    localStorage.setItem('totalTaskTime',this.totalTaskTime.toString());
     this.taskTime = 0;
     this.resetChronometer();
   }
@@ -240,6 +241,7 @@ export class BinnacleComponent implements OnInit {
     $('#journeyEndModal').modal('show');
   }
   public endJourney() {
+    localStorage.setItem('totalTaskTime','0');
     localStorage.setItem('Lunch', 'true');
     $('#journeyEndModal').modal('hide');
     this.router.navigateByUrl('/login');
