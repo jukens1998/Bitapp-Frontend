@@ -24,6 +24,7 @@ export class ScrumProjectsComponent implements OnInit {
   public getProjects() {
     this.PAcs.getScrumMasterProjects().subscribe((result) => {
       this.projectsScrum = result;
+      console.log(result);
       if (result != null) {
         this.emptyProjects = 'exists';
       }

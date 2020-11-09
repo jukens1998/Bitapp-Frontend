@@ -80,7 +80,7 @@ export class PAcsComponent implements OnInit {
 
   public projectDates() {
     this.projectDateArray = this.date.addDays(localStorage.getItem('creationDate'), parseInt(localStorage.getItem('sprintsAmount'), 0),
-      parseInt(localStorage.getItem('sprintsDuration'), 0));
+      parseInt(localStorage.getItem('sprintsDuration'), 0),'');
   }
   public createPacsTask() {
     if (this.form.invalid) {

@@ -25,6 +25,7 @@ import { PacsHomeComponent } from './Pages/pacs-home/pacs-home.component';
 import { PAcsComponent } from './Pages/pacs/pacs.component';
 import { ReportsComponent } from './Pages/reports/reports.component';
 import { RegisterComponent } from './Pages/register/register.component';
+import { DailyReportComponent } from './Components/CanvaReports/daily-report/daily-report.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { RegisterComponent } from './Pages/register/register.component';
     TasksPerMonthComponent,
     ProjectsLengthComponent,
     RegisterComponent,
+    DailyReportComponent,
 
   ],
   imports: [
