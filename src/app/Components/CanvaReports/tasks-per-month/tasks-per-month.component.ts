@@ -55,7 +55,7 @@ export class TasksPerMonthComponent implements OnInit {
       data: [{
         type: 'stackedColumn',
         showInLegend: true,
-        color: '#696661',
+        color: '#0F1C37',
         name: 'CGO - CSR',
         dataPoints: [
           { y: 6, x: new Date(2010, 0) },
@@ -71,7 +71,7 @@ export class TasksPerMonthComponent implements OnInit {
         type: 'stackedColumn',
         showInLegend: true,
         name: 'ADCAR',
-        color: '#EDCA93',
+        color: '#293064',
         dataPoints: [
           { y: 6, x: new Date(2010, 0) },
           { y: 9, x: new Date(2011, 0) },
@@ -86,7 +86,7 @@ export class TasksPerMonthComponent implements OnInit {
         type: 'stackedColumn',
         showInLegend: true,
         name: 'SEDICAR',
-        color: '#695A42',
+        color: '#007BFF',
         dataPoints: [
           { y: 7, x: new Date(2010, 0) },
           { y: 9, x: new Date(2011, 0) },
@@ -101,7 +101,7 @@ export class TasksPerMonthComponent implements OnInit {
         type: 'stackedColumn',
         showInLegend: true,
         name: 'Soporte',
-        color: '#B6B1A8',
+        color: '#D4DEF3',
         dataPoints: [
           { y: 8, x: new Date(2010, 0) },
           { y: 10, x: new Date(2011, 0) },

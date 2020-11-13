@@ -8,7 +8,7 @@ import * as CanvasJS from '../../../../assets/canvasjs/canvasjs.min';
   styleUrls: ['./projects-length.component.css']
 })
 export class ProjectsLengthComponent implements OnInit {
-// array that contains the data that will be render on the canvas
+  // array that contains the data that will be render on the canvas
   public projectsDataReport: any[];
 
   constructor(private reports: ReportsService) { }
@@ -22,16 +22,26 @@ export class ProjectsLengthComponent implements OnInit {
   public canvas() {
     this.reports.projectsReport().subscribe((result: any[]) => {
       this.projectsDataReport = result;
+
+      CanvasJS.addColorSet("greenShades",
+        [//colorSet Array
+          "#0F1C37",
+          "#293064",
+          "#007BFF",
+          "#D4DEF3",
+          "#333F4F"
+        ]);
       let chart = new CanvasJS.Chart('chartContainer', {
         theme: 'light2',
         animationEnabled: true,
         exportEnabled: true,
+        colorSet: "greenShades",
         title: {
           text: 'Duración de proyectos por días',
         },
         data: [{
           type: 'pie',
-          showInLegend: true,
+          showInLegend: false,
           toolTipContent: '<b>{name}</b>: {y} (#percent%)',
           indexLabel: '{name} - #percent%',
           dataPoints: [
