@@ -1,0 +1,15 @@
+#mainContainer {
+    background-image: url('../../../assets/images/background.jpg'), linear-gradient(#33333370, #4d4c4c5d);
+    height: 95%;
+    background-size: cover;
+}
+
+.title {
+    color: white;
+    font-size: 7rem;
+    text-shadow: grey 0 6px 6px;
+}
+
+.card-body {
+    padding: 0px;
+}

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BinacleService } from 'src/app/Services/BinacleServices/binacle-services.service';
 import { DateService } from 'src/app/Services/Date/date.service';
 import { UserIdService } from 'src/app/Services/User/user-id.service';
+import { HostListener } from '@angular/core';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -13,6 +14,12 @@ declare var $: any;
   templateUrl: './binnacle.component.html',
 })
 export class BinnacleComponent implements OnInit {
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeunloadHandler(event) {
+    return false;
+    //I have used return false but you can your other functions or any query or condition
+  }
 
   // user variables
   public userId = '...';
@@ -49,6 +56,7 @@ export class BinnacleComponent implements OnInit {
     this.totalTaskTime=Number(localStorage.getItem('totalTaskTime'));
     this.createForm();
   }
+
 
   public ngOnInit(): void {
     // gets the actual state of the lunch button

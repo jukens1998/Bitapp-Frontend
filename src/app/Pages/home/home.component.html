@@ -1,26 +1,45 @@
-<div class="container-fluid">
-    <div class="row mt-2">
-        <div class="col-6">
-            <div class="card">
-                <a href="#" routerLink="/Bitacora">
-                    <img src="../../../assets/images/BinnacleMain.jpg" class="img-fluid img-thumbnail"
-                        alt="Puede contener a dos mujeres">
-                </a>
-                <div class="card-body">
-                    <h2 class="text-center">Bitacora</h2>
+<div class="container-fluid" id="mainContainer">
+    <div class="row ">
+        <div class="col-12 text-center">
+            <div class="tab-content" id="myTabContent">
+                <div [class.show]="!options" [class.active]="!options"  class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="text-center">
+                        <a href="#" routerLink="/Bitacora">
+                            <img src="../../../assets/images/BinnacleMain.png" class="img-fluid"
+                                alt="Puede contener a dos mujeres" style="height: 70vh;">
+                        </a>
+                        <div class="card-body">
+                            <h2  class="text-center title">Bitacora</h2>
+                        </div>
+                    </div>
+                </div>
+                <div [class.show]="options" [class.active]="options" class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="text-center">
+                        <a href="#" routerLink="/pacsHome">
+                            <img src="../../../assets/images/PacsMain.png" class="img-fluid  py-4"
+                                alt="Puede contener a dos mujeres" style="height: 70vh;">
+                        </a>
+                        <div class="card-body ">
+                            <h2 class="text-center title">PAcs</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-6">
-            <div class="card">
-                <a href="#" routerLink="/pacsHome">
-                    <img src="../../../assets/images/PacsMain (Personalizado).jpg" class="img-fluid  py-4"
-                        alt="Puede contener a dos mujeres">
-                </a>
-                <div class="card-body img-thumbnail">
-                    <h2 class="text-center">PAcs</h2>
-                </div>
-            </div>
+    </div>
+
+    <div class="row fixed-bottom">
+        <div class="col-12">
+            <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
+                <li class="nav-item btn-lg" role="presentation" routerLink="/Bitacora" (mouseover)="options=false">
+                    <a [class.active]="!options" class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">Bitacora</a>
+                </li>
+                <li class="nav-item btn-lg" role="presentation" routerLink="/pacsHome" (mouseover)="options=true">
+                    <a [class.active]="options" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                        aria-controls="profile" aria-selected="false">PAcs</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

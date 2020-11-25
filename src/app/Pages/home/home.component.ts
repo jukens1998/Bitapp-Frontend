@@ -8,6 +8,7 @@ import { PAcsService } from '../../Services/PAcs/pacs.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
+  public options: boolean=false;
   constructor(private pac: PAcsService, private date: DateService) { }
 
   public ngOnInit(): void { }
